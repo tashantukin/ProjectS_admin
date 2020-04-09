@@ -9,6 +9,9 @@ betswitch.addEventListener('change', () => {
 
 $(document).ready(function() {
   getBetStatus();
+  var chk = $('#divwinner input:radio:checked');
+  //chk.attr('value');
+  console.log(chk.val());
 
 });
 

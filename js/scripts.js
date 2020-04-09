@@ -10,7 +10,6 @@ betswitch.addEventListener('change', () => {
 $(document).ready(function() {
   getBetStatus();
  
-
 });
 
 function getBetStatus(){
@@ -201,8 +200,6 @@ function SaveBetSwitch() {
   })
 
 }
-
-
 function newGame() {
    // get values
    var path = scriptSrc.replace('/js/scripts.js','').trim();

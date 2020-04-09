@@ -9,9 +9,7 @@ betswitch.addEventListener('change', () => {
 
 $(document).ready(function() {
   getBetStatus();
-  var chk = $('#divwinner input:radio:checked');
-  //chk.attr('value');
-  console.log(chk.val());
+ 
 
 });
 
@@ -232,7 +230,37 @@ function newGame() {
        }
    })
 }
-
+function declareWinner() {
+  var side = $('#divwinner input:radio:checked');
+  //chk.attr('value');
+  console.log(side.val());
+  var data = {'side': side.val() };
+  var path = scriptSrc.replace('/js/scripts.js','').trim();
+  var apiUrl = path + '/declareWinner.php';
+  $.ajax({
+      url: apiUrl,          
+      method: 'POST',
+      contentType: 'application/json',
+      data: JSON.stringify(data),
+      success: function(response) {
+        //TODO: PROGRESS BAR FOR WINNERS
+        //COUNT WINNERS
+        
+        //  if (betStatus == true){
+        //   $('#betlabel').text("BETTING is ON");
+        //   $('#betlabel').removeClass("text-danger");
+        //   $('#betlabel').addClass("text-success");
+        //  }else {  
+        //    $('#betlabel').text("BETTING is OFF");
+        //    $('#betlabel').removeClass("text-success");
+        //    $('#betlabel').addClass("text-danger")
+        // }
+      },
+      error: function (jqXHR, status, err) {
+            toastr.error('---');
+      }
+  });
+}
 
 
 

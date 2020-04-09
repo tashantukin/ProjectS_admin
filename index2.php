@@ -611,7 +611,7 @@
                                     </div>
                                     <hr>
                                     <button type="button" class="btn btn-default">Cancel</button>
-                                    <button type="button" class="btn btn-success" onclick="SaveMaxBet()">Save</button>
+                                    <button type="button" class="btn btn-success" onclick="declareWinner()">Save</button>
                   </div>
                   <div class="tab-pane fade" id="custom-tabs-one-settings" role="tabpanel" aria-labelledby="custom-tabs-one-settings-tab">
                      

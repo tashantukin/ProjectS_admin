@@ -12,7 +12,6 @@ if ($side != 'DRAW') {
         exit(mysqli_error($conn));
     }
 }
-
     $query = "UPDATE tblFight SET TotalBetCount = (select count(ID) from tblbet where FightID = (select max(FightID) from tblFight)),
                 TotalBetAmount = (select sum(BetAmount) from tblbet where FightID = (select max(FightID) from tblFight)),
                 TotalWinningAmount = (select sum(TotalWinAmount) from tblbet where FightID = (select max(FightID) from tblFight)),

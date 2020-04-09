@@ -245,16 +245,6 @@ function declareWinner() {
       success: function(response) {
         //TODO: PROGRESS BAR FOR WINNERS
         //COUNT WINNERS
-        
-        //  if (betStatus == true){
-        //   $('#betlabel').text("BETTING is ON");
-        //   $('#betlabel').removeClass("text-danger");
-        //   $('#betlabel').addClass("text-success");
-        //  }else {  
-        //    $('#betlabel').text("BETTING is OFF");
-        //    $('#betlabel').removeClass("text-success");
-        //    $('#betlabel').addClass("text-danger")
-        // }
       },
       error: function (jqXHR, status, err) {
             toastr.error('---');

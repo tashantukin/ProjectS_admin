@@ -8,6 +8,7 @@
 	<link href="css/font-awesome.min.css" rel="stylesheet">
 	<link href="css/datepicker3.css" rel="stylesheet">
 	<link href="css/styles.css" rel="stylesheet">
+	<link href="css/style.css" rel="stylesheet">
 	
 	<!--Custom Font-->
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -177,7 +178,7 @@
 		</div>
 		<div class="row">
 			<div class="col-md-12">
-				<div class="panel panel-default">
+				<!-- <div class="panel panel-default">
 					<div class="panel-heading">
 						Site Traffic Overview
 						<ul class="pull-right panel-settings panel-button-tab-right">
@@ -209,7 +210,133 @@
 							<canvas class="main-chart" id="line-chart" height="200" width="600"></canvas>
 						</div>
 					</div>
-				</div>
+				</div> -->
+				<div class="row">
+					<div class="col-lg-12">
+						<h2>Game Controls</h2>
+						<div class="row">
+
+                  <div class="col-md-6">
+                  <button type="button" class="btn btn-primary swalDefaultSuccess" onclick="newGame()">New Game</button>
+                  <script src="js/scripts.js"></script>
+                      <p class= "text-info" >Toggle the switch to START / STOP bet. </p>
+                      <h1 id = "betlabel"></h1>
+                      <label class="rocker">
+                        <input type="checkbox" checked id="betswitch">
+                        
+                        <span class="switch-left">START BET</span>
+                        <span class="switch-right">STOP BET</span>
+                      </label>
+                      <!-- <input id="inpLock" type="checkbox" /><label class="btn-lock" for="inpLock"><svg width="36" height="40" viewBox="0 0 36 40">
+                <path class="lockb" d="M27 27C27 34.1797 21.1797 40 14 40C6.8203 40 1 34.1797 1 27C1 19.8203 6.8203 14 14 14C21.1797 14 27 19.8203 27 27ZM15.6298 26.5191C16.4544 25.9845 17 25.056 17 24C17 22.3431 15.6569 21 14 21C12.3431 21 11 22.3431 11 24C11 25.056 11.5456 25.9845 12.3702 26.5191L11 32H17L15.6298 26.5191Z"></path>
+                <path class="lock" d="M6 21V10C6 5.58172 9.58172 2 14 2V2C18.4183 2 22 5.58172 22 10V21"></path><path class="bling" d="M29 20L31 22"></path><path class="bling" d="M31.5 15H34.5"></path><path class="bling" d="M29 10L31 8"></path></svg></label> -->
+
+              
+              
+                </div>
+					</div>
+					<div class="col-md-4">
+						<div class="panel panel-warning">
+							<div class="panel-heading">Sultada
+								<span class="pull-right clickable panel-toggle"><em class="fa fa-toggle-up"></em></span></div>
+							<div class="panel-body">
+								<div class ="col-md-6">
+								<label for="betamounts">Game</label>
+								<input type="text" id="game" placeholder="Game" class="form-control" />
+								<!-- <label for="nof">NOF</label>  -->
+							  </div>
+
+							  <div class ="col-md-6">
+								<label for="betamounts">No.of Fights</label>
+								<input type="text" id="nof" placeholder="1-100" class="form-control" />
+							  </div>
+
+							  <!-- <hr> -->
+							  <div class ="col-md-6">
+								<label for="betamounts">Maximum Bet Limit</label>
+								<input type="text" id="maxbet" placeholder="5000" class="form-control" />
+							  </div>
+							  <hr>
+							  <div class ="col-md-12">
+								<hr>
+							  <button type="button" class="btn btn-default">Cancel</button>
+							  <button type="button" class="btn btn-primary swalDefaultSuccess" onclick="SaveSultadaDetails()">Save Changes</button>
+							  </div>
+							</div>
+						</div>
+					</div>
+
+
+
+					
+					<div class="col-md-4">
+						<div class="panel panel-primary">
+							<div class="panel-heading">Odds
+								<span class="pull-right clickable panel-toggle"><em class="fa fa-toggle-up"></em></span></div>
+								<div class="panel-body">
+									<div class ="col-md-6">
+										<?php 
+										include("./db.php");
+										$sql = "SELECT value  from settings where id = 3";
+										$resultset = mysqli_query($conn, $sql) or die("database error:". mysqli_error($conn)); 
+										$walarecord = mysqli_fetch_assoc($resultset);
+										
+										$sql = "SELECT value  from settings where id = 4";
+										$resultset = mysqli_query($conn, $sql) or die("database error:". mysqli_error($conn)); 
+										$meronrecord = mysqli_fetch_assoc($resultset);
+			
+										$sql = "SELECT value  from settings where id = 1";
+										$resultset = mysqli_query($conn, $sql) or die("database error:". mysqli_error($conn)); 
+										$betlimitrecord = mysqli_fetch_assoc($resultset);
+			
+										?>
+											  <label for="betamounts">WALA ODDS</label>
+											  <input type="text" id="walaodds" placeholder="1-100" class="form-control" value = "<?php echo $walarecord['value'] ?>" />
+									</div>
+		  
+									<div class ="col-md-6">
+										<label for="betamounts">MERON ODDS </label>
+										<input type="text" id="meronodds" placeholder="5000" class="form-control" value = "<?php echo $meronrecord['value'] ?>" />
+									</div>
+								
+									<div class ="col-md-12">
+									<hr>
+										<button type="button" class="btn btn-primary swalDefaultSuccess" onclick="saveOdds()">Save Changes</button>
+									</div>
+									<script src="js/scripts.js"></script>
+							 	
+							  </div>
+							</div>
+						</div>
+					
+					<div class="col-md-4">
+						<div class="panel panel-success">
+							<div class="panel-heading">Declare Winner
+								<span class="pull-right clickable panel-toggle"><em class="fa fa-toggle-up"></em></span></div>
+							<div class="panel-body">
+							<div class = "col-md-12" id ="divwinner">
+                                          <!-- <label for="betamounts">Maximum Bet</label>
+                                        <input type="text" id="maxbet1" placeholder="Max Bet" class="form-control" value = "<?php echo $betlimitrecord['value'] ?>" /> -->
+                                        <input id="toggle-on" class="toggle toggle-left" name="toggle" value="MERON" type="radio" checked>
+              
+                                          <label for="toggle-on" class="btn">MERON</label>
+                                          <input id="toggle-off" class="toggle toggle-right" name="toggle" value="WALA" type="radio">
+                                          <label for="toggle-off" class="btn">WALA</label>
+                                          <input id="toggle-draw" class="toggle toggle-left" name="toggle" value="DRAW" type="radio" checked>
+                                          <label for="toggle-on" class="btn">DRAW</label>
+                                        </div>
+                                    <!-- </div> -->
+									
+									<div class="col-md-12">
+									<hr>
+                                    <!-- <button type="button" class="btn btn-default">Cancel</button> -->
+									<button type="button" class="btn btn-success" onclick="declareWinner()">Save</button>
+									</div>
+                  </div>
+							</div>
+						
+					</div>
+				</div><!-- /.row -->
 			</div>
 		</div><!--/.row-->
 		

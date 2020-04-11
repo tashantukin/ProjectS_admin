@@ -220,7 +220,7 @@
 				</div><!-- /.row -->
 			</div>
 		</div><!--/.row-->
-		
+	
 
 		<div class="row">
 			<div class="col-xs-6 col-md-3">
@@ -237,7 +237,21 @@
 							<!-- <div class="col-md-6"> -->
 							<div class="row">
 								<h5 class="font-weight-bold">Count</h5>	
-								<h1 class="font-weight-bolder" style="font-size:70px">1268</h1>
+								<h1 class="font-weight-bolder" id="meroncount" style="font-size:70px">
+								<?php
+								require('Bet.php');
+						
+								?>
+									<script type ="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+												</script>
+												<script type ="text/javascript">
+													$(document).ready(function() {
+														setInterval(function() {        
+															$('#meroncount').load('betCountMeron.php')
+														},3000);
+													});
+												</script>
+								</h1>
 								<hr>
 								<h5 class="font-weight-bold">Total Amount</h5>	
 								<h1 class="font-weight-bolder" style="font-size:70px">1268</h1>
@@ -250,23 +264,24 @@
 				<div class="panel panel-default">
 					<div class="panel-body easypiechart-panel">
 						<h2 class="bg-info text-white font-weight-bold">WALA</h2>
-						<!-- <div class="col-md-6">
-							<h5 class="font-weight-bold">Computed Revenue</h5>
-							<h1 class="font-weight-bolder" style="font-size:40px">126</h1>	
-								<small class="font-weight-bold">Computed Loss</small>
-								<h1 class="font-weight-bolder" style="font-size:40px">126</h1>	 -->
-							<!-- <div class="easypiechart" id="easypiechart-orange" data-percent="65" ><span class="percent">65%</span></div> -->
-						<!-- </div> -->
-						<!-- <div class="col-md-6"> -->
-						<!-- <h5 class="font-weight-bold">Count</h5>	
-							<h1 class="font-weight-bolder" style="font-size:70px">126</h1> -->
-						<!-- </div> -->
 						<div class="row">
 								<h5 class="font-weight-bold">Count</h5>	
-								<h1 class="font-weight-bolder" style="font-size:70px">1268</h1>
+								<h1 class="font-weight-bolder" id="walacount" style="font-size:70px">
+								<script type ="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+												</script>
+												<script type ="text/javascript">
+													$(document).ready(function() {
+														setInterval(function() {                           
+															$('#walacount').load('betCount.php')
+														},3000);
+													});
+												</script>
+								</h1>
 								<hr>
 								<h5 class="font-weight-bold">Total Amount</h5>	
-								<h1 class="font-weight-bolder" style="font-size:70px">1268</h1>
+								<h1 class="font-weight-bolder" style="font-size:70px">
+											423342
+								</h1>
 							</div>
 						</div>
 				</div>
@@ -284,7 +299,18 @@
 						<!-- <div class="easypiechart" id="easypiechart-teal" data-percent="56" ><span class="percent">56%</span></div> -->
 						<!-- </div> -->
 						<h5 class="font-weight-bold">All Branches</h5>	
-						<h1 class="font-weight-bolder" style="font-size:80px">126</h1>
+						<h1 class="font-weight-bolder" id = "totalcount"  style="font-size:80px">
+						<script type ="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+												</script>
+												<script type ="text/javascript">
+													$(document).ready(function() {
+														setInterval(function() {                           
+															$('#totalcount').load('betCount.php')
+														},3000);
+													});
+												</script>		
+					
+					</h1>
 						<hr>
 								<a class="font-weight-bold" href="">View By Branch</a>	
 								<h1 class="font-weight-bolder" style="font-size:70px">---</h1>
@@ -295,15 +321,20 @@
 				<div class="panel panel-default">
 					<div class="panel-body easypiechart-panel">
 						<h2 class="bg-success text-white font-weight-bold"> TOTAL AMOUNT</h2>
-						<!-- <div class="col-md-6"> -->
-							<!-- <div class="easypiechart" id="easypiechart-red" data-percent="27" ><span class="percent">27%</span></div> -->
-							<!-- <h5 class="font-weight-bold">Computed Revenue</h5>
-						<h1 class="font-weight-bolder" style="font-size:50px">126</h1>	
-							<small class="font-weight-bold">Computed Loss</small>
-							<h1 class="font-weight-bolder" style="font-size:50px">126</h1> -->
-						<!-- </div> -->
+					
 						<h5 class="font-weight-bold">All Branches</h5>	
-						<h1 class="font-weight-bolder" style="font-size:75px"> 126000</h1>
+						<h1 class="font-weight-bolder" id ="totalamount" style="font-size:75px"> 
+						<script type ="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+												</script>
+												<script type ="text/javascript">
+													$(document).ready(function() {
+														setInterval(function() {        
+															$('#totalamount').load('betTotalAmount.php')
+														},3000);
+													});
+												</script>
+				
+				</h1>
 						<hr>
 								<a class="font-weight-bold" href="">View By Branch</a>	
 								<h1 class="font-weight-bolder" style="font-size:70px">---</h1>

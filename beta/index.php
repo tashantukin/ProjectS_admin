@@ -93,12 +93,24 @@
 			</div>
 			<div class="clear"></div>
 		</div>
-		<div class="divider"></div>
-		<form role="search">
-			<div class="form-group">
-				<input type="text" class="form-control" placeholder="Search">
-			</div>
-		</form>
+		<div class="divider">
+		<div class="row">
+
+<div class="col-md-12"  style="margin-left:10px";>
+
+	<p class= "text-info" >Toggle the switch to START / STOP bet. </p>
+	<h2 id="betlabel"></h2>
+	<label class="rocker">
+	  <input type="checkbox" checked id="betswitch" >
+	  
+	  <span class="switch-left">START BET</span>
+	  <span class="switch-right">STOP BET</span>
+	</label>
+</div>
+
+</div>
+		</div>
+		
 		<ul class="nav menu">
 			<li class="active"><a href="index.html"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
 			<li><a href="widgets.html"><em class="fa fa-calendar">&nbsp;</em> Widgets</a></li>
@@ -140,7 +152,7 @@
 			</div>
 		</div><!--/.row-->
 		
-		<div class="panel panel-container">
+		<!-- <div class="panel panel-container">
 			<div class="row">
 				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
 					<div class="panel panel-teal panel-widget border-right">
@@ -173,9 +185,9 @@
 							<div class="text-muted">Page Views</div>
 						</div>
 					</div>
-				</div>
-			</div><!--/.row-->
-		</div>
+				</div> -->
+			<!-- </div>/.row -->
+		<!-- </div> -->
 		<div class="row">
 			<div class="col-md-12">
 				<!-- <div class="panel panel-default">
@@ -208,36 +220,25 @@
 					<div class="panel-body">
 						<div class="canvas-wrapper">
 							<canvas class="main-chart" id="line-chart" height="200" width="600"></canvas>
-						</div>
+						,</div>
 					</div>
 				</div> -->
 				<div class="row">
 					<div class="col-lg-12">
 						<h2>Game Controls</h2>
+						<div class="col-lg-12" style="padding-bottom: 5px;">
+						<button type="button" class="btn btn-lg btn-danger" onclick="newGame()">New Game</button>
+						<!-- <button type="button" class=" pull-right btn btn-lg btn-info" onclick="">Odds</button>
+						<button type="button" class=" pull-right  btn btn-lg btn-success" onclick="">Winner</button>
+						<button type="button" class=" pull-right  btn btn-lg btn-success" onclick="">Sultada</button> -->
+							<script src="js/scripts.js"></script>
+						</div>
 						<div class="row">
 
-                  <div class="col-md-6">
-                  <button type="button" class="btn btn-primary swalDefaultSuccess" onclick="newGame()">New Game</button>
-                  <script src="js/scripts.js"></script>
-                      <p class= "text-info" >Toggle the switch to START / STOP bet. </p>
-                      <h1 id = "betlabel"></h1>
-                      <label class="rocker">
-                        <input type="checkbox" checked id="betswitch">
-                        
-                        <span class="switch-left">START BET</span>
-                        <span class="switch-right">STOP BET</span>
-                      </label>
-                      <!-- <input id="inpLock" type="checkbox" /><label class="btn-lock" for="inpLock"><svg width="36" height="40" viewBox="0 0 36 40">
-                <path class="lockb" d="M27 27C27 34.1797 21.1797 40 14 40C6.8203 40 1 34.1797 1 27C1 19.8203 6.8203 14 14 14C21.1797 14 27 19.8203 27 27ZM15.6298 26.5191C16.4544 25.9845 17 25.056 17 24C17 22.3431 15.6569 21 14 21C12.3431 21 11 22.3431 11 24C11 25.056 11.5456 25.9845 12.3702 26.5191L11 32H17L15.6298 26.5191Z"></path>
-                <path class="lock" d="M6 21V10C6 5.58172 9.58172 2 14 2V2C18.4183 2 22 5.58172 22 10V21"></path><path class="bling" d="M29 20L31 22"></path><path class="bling" d="M31.5 15H34.5"></path><path class="bling" d="M29 10L31 8"></path></svg></label> -->
-
-              
-              
-                </div>
 					</div>
 					<div class="col-md-4">
-						<div class="panel panel-warning">
-							<div class="panel-heading">Sultada
+						<div class="panel panel-primary">
+							<div class="panel-heading">SULTADA
 								<span class="pull-right clickable panel-toggle"><em class="fa fa-toggle-up"></em></span></div>
 							<div class="panel-body">
 								<div class ="col-md-6">
@@ -271,7 +272,7 @@
 					
 					<div class="col-md-4">
 						<div class="panel panel-primary">
-							<div class="panel-heading">Odds
+							<div class="panel-heading">ODDS
 								<span class="pull-right clickable panel-toggle"><em class="fa fa-toggle-up"></em></span></div>
 								<div class="panel-body">
 									<div class ="col-md-6">
@@ -311,7 +312,7 @@
 					
 					<div class="col-md-4">
 						<div class="panel panel-success">
-							<div class="panel-heading">Declare Winner
+							<div class="panel-heading">DECLARE WINNER
 								<span class="pull-right clickable panel-toggle"><em class="fa fa-toggle-up"></em></span></div>
 							<div class="panel-body">
 							<div class = "col-md-12" id ="divwinner">
@@ -335,41 +336,71 @@
                   </div>
 							</div>
 						
-					</div>
+					<!-- </div> -->
 				</div><!-- /.row -->
 			</div>
 		</div><!--/.row-->
 		
+
 		<div class="row">
 			<div class="col-xs-6 col-md-3">
 				<div class="panel panel-default">
 					<div class="panel-body easypiechart-panel">
-						<h4>New Orders</h4>
-						<div class="easypiechart" id="easypiechart-blue" data-percent="92" ><span class="percent">92%</span></div>
+						<h2 class="bg-danger text-white font-weight-bold">MERON</h2>
+							<div class="col-md-6">
+							<h5 class="font-weight-bold">Computed Revenue</h5>
+								<!-- <div class="easypiechart" id="easypiechart-blue" data-percent="92" ><span class="percent">92%</span></div> -->
+								<h1 class="font-weight-bolder" style="font-size:50px">126</h1>	
+							<small class="font-weight-bold">Computed Loss</small>
+							<h1 class="font-weight-bolder" style="font-size:50px">126</h1>	
+							</div>
+						<h1 class="font-weight-bolder" style="font-size:70px">126</h1>
+
 					</div>
 				</div>
 			</div>
 			<div class="col-xs-6 col-md-3">
 				<div class="panel panel-default">
 					<div class="panel-body easypiechart-panel">
-						<h4>Comments</h4>
-						<div class="easypiechart" id="easypiechart-orange" data-percent="65" ><span class="percent">65%</span></div>
+						<h2 class="bg-info text-white font-weight-bold">WALA</h2>
+						<div class="col-md-6">
+						<h5 class="font-weight-bold">Computed Revenue</h5>
+						<h1 class="font-weight-bolder" style="font-size:50px">126</h1>	
+							<small class="font-weight-bold">Computed Loss</small>
+							<h1 class="font-weight-bolder" style="font-size:50px">126</h1>	
+							<!-- <div class="easypiechart" id="easypiechart-orange" data-percent="65" ><span class="percent">65%</span></div> -->
+							</div>
+							<h1 class="font-weight-bolder" style="font-size:70px">126</h1>
+						</div>
+				</div>
+			</div>
+			<div class="col-xs-6 col-md-3">
+				<div class="panel panel-default">
+					<div class="panel-body easypiechart-panel">
+						<h2 class="bg-warning text-white font-weight-bold" >TOTAL BETS</h2>
+						<div class="col-md-6">
+							<!-- <h5 class="font-weight-bold">Computed Revenue</h5>
+							<h1 class="font-weight-bolder" style="font-size:50px">126</h1>	
+							<small class="font-weight-bold">Computed Loss</small>
+							<h1 class="font-weight-bolder" style="font-size:50px">126</h1>	 -->
+						<!-- <div class="easypiechart" id="easypiechart-teal" data-percent="56" ><span class="percent">56%</span></div> -->
+						</div>
+						<h1 class="font-weight-bolder" style="font-size:80px">126</h1>
 					</div>
 				</div>
 			</div>
 			<div class="col-xs-6 col-md-3">
 				<div class="panel panel-default">
 					<div class="panel-body easypiechart-panel">
-						<h4>New Users</h4>
-						<div class="easypiechart" id="easypiechart-teal" data-percent="56" ><span class="percent">56%</span></div>
-					</div>
-				</div>
-			</div>
-			<div class="col-xs-6 col-md-3">
-				<div class="panel panel-default">
-					<div class="panel-body easypiechart-panel">
-						<h4>Visitors</h4>
-						<div class="easypiechart" id="easypiechart-red" data-percent="27" ><span class="percent">27%</span></div>
+						<h2 class="bg-success text-white font-weight-bold"> TOTAL AMOUNT</h2>
+						<div class="col-md-6">
+							<!-- <div class="easypiechart" id="easypiechart-red" data-percent="27" ><span class="percent">27%</span></div> -->
+							<!-- <h5 class="font-weight-bold">Computed Revenue</h5>
+						<h1 class="font-weight-bolder" style="font-size:50px">126</h1>	
+							<small class="font-weight-bold">Computed Loss</small>
+							<h1 class="font-weight-bolder" style="font-size:50px">126</h1> -->
+						</div>
+						<h1 class="font-weight-bolder" style="font-size:75px"> 126000</h1>
 					</div>
 				</div>
 			</div>
@@ -626,6 +657,7 @@
 	<script src="js/easypiechart-data.js"></script>
 	<script src="js/bootstrap-datepicker.js"></script>
 	<script src="js/custom.js"></script>
+	<script src="js/scripts.js"></script>
 	<script>
 		window.onload = function () {
 	var chart1 = document.getElementById("line-chart").getContext("2d");
@@ -636,6 +668,9 @@
 	scaleFontColor: "#c5c7cc"
 	});
 };
+
+
+
 	</script>
 		
 </body>

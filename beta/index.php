@@ -119,8 +119,8 @@
 					<div class="col-md-4">
 						<div class="panel panel-primary">
 							<div class="panel-heading">SULTADA
-								<span class="pull-right clickable panel-toggle"><em class="fa fa-toggle-up"></em></span></div>
-							<div class="panel-body">
+								<span class="pull-right clickable panel-toggle"><em class="fa fa-toggle-down"></em></span></div>
+							<div class="panel-body" id="sultada">
 								<div class ="col-md-6">
 								<label for="betamounts">Game</label>
 								<input type="text" id="game" placeholder="Game" class="form-control" />
@@ -147,14 +147,11 @@
 						</div>
 					</div>
 
-
-
-					
 					<div class="col-md-4">
 						<div class="panel panel-primary">
 							<div class="panel-heading">ODDS
-								<span class="pull-right clickable panel-toggle"><em class="fa fa-toggle-up"></em></span></div>
-								<div class="panel-body">
+								<span class="pull-right clickable panel-toggle"><em class="fa fa-toggle-down"></em></span></div>
+								<div class="panel-body" id="odds">
 									<div class ="col-md-6">
 										<?php 
 										include("./db.php");
@@ -193,8 +190,8 @@
 					<div class="col-md-4">
 						<div class="panel panel-success">
 							<div class="panel-heading">DECLARE WINNER
-								<span class="pull-right clickable panel-toggle"><em class="fa fa-toggle-up"></em></span></div>
-							<div class="panel-body">
+								<span class="pull-right clickable panel-toggle"><em class="fa fa-toggle-down"></em></span></div>
+							<div class="panel-body" id ="winner">
 							<div class = "col-md-12" id ="divwinner">
                                           <!-- <label for="betamounts">Maximum Bet</label>
                                         <input type="text" id="maxbet1" placeholder="Max Bet" class="form-control" value = "<?php echo $betlimitrecord['value'] ?>" /> -->
@@ -370,17 +367,55 @@
 						Recent Fights
 						<span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span></div>
 					<div class="panel-body articles-container">
-
-						<div class="article border-bottom">
-							<div class=" col-md-12 col-xs-12">
+<!-- 
+					<div class="article border-bottom">
+							<div class="col-xs-12">
 								<div class="row">
 									<div class="col-xs-2 col-md-2 date">
-									<div class="text-muted">Fight No:</div>
-										<div class="large">30</div>  
-								     <p>MERON</p>
+										<div class="large">30</div>
+										<div class="text-muted">Jun</div>
 									</div>
+									<div class="col-xs-10 col-md-10">
+										<h4><a href="#">Lorem ipsum dolor sit amet</a></h4>
+										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at sodales nisl. Donec malesuada orci ornare risus finibus feugiat.</p>
+									</div>
+								</div>
+							</div>
+							<div class="clear"></div>
+						</div> -->
+						<!-- End .article							 -->
+						
+							
+									<?php
+									  $sql = "SELECT FightNo, FightWinner FROM tblFight order by FightID desc limit 3";
+									  $resultset = mysqli_query($conn, $sql);// or die("database error:". mysqli_error($conn));  
+									  while( $record = mysqli_fetch_assoc($resultset)) {
+										 echo "<div class='article border-top'>";
+										// echo "<hr>";
+										echo "<div class='col-xs-12'>";
+										echo "<div class='row'>";
+										echo "<div class='col-xs-2 col-md-2 date'>";
+										echo "<div class='text-muted'>" . "Fight No:" . "</div>";
+										echo "<div class='large'>" . $record['FightNo']. "</div>";  
+										echo "<p>"  . $record['FightWinner'] ."</p>";
+										echo "</div>";
+										
+										echo "<div class='col-xs-10 col-md-10'>";
+										echo "<h4><a href='#'>Lorem ipsum dolor sit amet</a></h4>";
+										echo "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at sodales nisl. Donec malesuada orci ornare risus finibus feugiat.</p>";
+									   echo "</div>";
+										echo "</div>";
+										echo "</div>";
+										// echo "</div>";
+										echo "<div class='clear'></div>";
+									  }
+									 
+									
+										// echo "</div>";
+									?>				
 
-									<div class="col-xs-10">
+
+									<!-- <div class="col-xs-10">
 										<div class ="col-md-6">
 										<h4><a href="#">Fight Details</a></h4>
 									    <p>Total Count:</p>
@@ -401,50 +436,15 @@
 										</div>
 
 
-									</div>
+									</div> -->
 									
 
-								</div>
-							</div>
-							<div class="clear"></div>
-						</div><!--End .article-->
+							
 						
 
 
 
-						<div class="article border-bottom">
-							<div class="col-xs-12">
-								<div class="row">
-									<div class="col-xs-2 col-md-2 date">
-										<div class="large">28</div>
-										<div class="text-muted">Jun</div>
-									</div>
-									<div class="col-xs-10 col-md-10">
-										<h4><a href="#">Lorem ipsum dolor sit amet</a></h4>
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at sodales nisl. Donec malesuada orci ornare risus finibus feugiat.</p>
-									</div>
-								</div>
-							</div>
-							<div class="clear"></div>
-						</div><!--End .article-->
 						
-						<div class="article">
-							<div class="col-xs-12">
-								<div class="row">
-									<div class="col-xs-2 col-md-2 date">
-										<div class="large">24</div>
-										<div class="text-muted">Jun</div>
-									</div>
-									<div class="col-xs-10 col-md-10">
-										<h4><a href="#">Lorem ipsum dolor sit amet</a></h4>
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at sodales nisl. Donec malesuada orci ornare risus finibus feugiat.</p>
-									</div>
-								</div>
-							</div>
-							<div class="clear"></div>
-						</div><!--End .article-->
-					</div>
-				</div><!--End .articles-->
 			
 			</div><!--/.col-->
 			

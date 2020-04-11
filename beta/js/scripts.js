@@ -9,7 +9,9 @@ betswitch.addEventListener('change', () => {
 
 $(document).ready(function() {
   getBetStatus();
- 
+  $('#sultada').hide();
+  $('#odds').hide();
+  $('#winner').hide();
 });
 
 function getBetStatus(){

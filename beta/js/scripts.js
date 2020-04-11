@@ -14,6 +14,12 @@ $(document).ready(function() {
   $('#winner').hide();
 });
 
+
+$('#win').on('load', function(){
+  if($(this).text() == 'MERON') {
+    $(this).css('color','red');
+  }
+})
 function getBetStatus(){
   var path = scriptSrc.replace('/js/scripts.js','').trim();
   var apiUrl = path + '/getBetStatus.php';

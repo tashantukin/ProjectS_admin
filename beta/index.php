@@ -217,7 +217,6 @@
 				</div><!-- /.row -->
 			</div>
 		</div><!--/.row-->
-	
 
 		<div class="row">
 			<div class="col-xs-6 col-md-3">
@@ -307,13 +306,6 @@
 					<div class="panel-body easypiechart-panel">
 					
 						<h2 class="bg-warning text-white font-weight-bold" >TOTAL BETS</h2>
-						<!-- <div class="col-md-6"> -->
-							<!-- <h5 class="font-weight-bold">Computed Revenue</h5>
-							<h1 class="font-weight-bolder" style="font-size:50px">126</h1>	
-							<small class="font-weight-bold">Computed Loss</small>
-							<h1 class="font-weight-bolder" style="font-size:50px">126</h1>	 -->
-						<!-- <div class="easypiechart" id="easypiechart-teal" data-percent="56" ><span class="percent">56%</span></div> -->
-						<!-- </div> -->
 						<h5 class="font-weight-bold">All Branches</h5>	
 						<h1 class="font-weight-bolder" id = "totalcount"  style="font-size:80px">
 						<script type ="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js">
@@ -367,25 +359,7 @@
 						Recent Fights
 						<span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span></div>
 					<div class="panel-body articles-container">
-<!-- 
-					<div class="article border-bottom">
-							<div class="col-xs-12">
-								<div class="row">
-									<div class="col-xs-2 col-md-2 date">
-										<div class="large">30</div>
-										<div class="text-muted">Jun</div>
-									</div>
-									<div class="col-xs-10 col-md-10">
-										<h4><a href="#">Lorem ipsum dolor sit amet</a></h4>
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at sodales nisl. Donec malesuada orci ornare risus finibus feugiat.</p>
-									</div>
-								</div>
-							</div>
-							<div class="clear"></div>
-						</div> -->
-						<!-- End .article							 -->
-						
-							
+			
 									<?php
 									  $sql = "SELECT FightNo, FightWinner FROM tblFight order by FightID desc limit 3";
 									  $resultset = mysqli_query($conn, $sql);// or die("database error:". mysqli_error($conn));  
@@ -399,11 +373,26 @@
 										echo "<div class='large'>" . $record['FightNo']. "</div>";  
 										echo "<p>"  . $record['FightWinner'] ."</p>";
 										echo "</div>";
-										
-										echo "<div class='col-xs-10 col-md-10'>";
-										echo "<h4><a href='#'>Lorem ipsum dolor sit amet</a></h4>";
-										echo "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at sodales nisl. Donec malesuada orci ornare risus finibus feugiat.</p>";
-									   echo "</div>";
+										echo "<div class='col-xs-2 col-md-2 date'>";
+										echo "<div class='text-muted'>" . "Total Count" . "</div>";
+										echo "<div class='large' id ='win'>" . $record['FightNo']. "</div>";  
+										echo "</div>";
+										echo "<div class='col-xs-2 col-md-2 date'>";
+										echo "<div class='text-muted'>" . "Total Amount" . "</div>";
+										echo "<div class='large' id ='win'>" . $record['FightNo']. "</div>";  
+										echo "</div>";
+										echo "<div class='col-xs-2 col-md-2 date'>";
+										echo "<div class='text-muted'>" . "Revenue" . "</div>";
+										echo "<div class='large' id ='win'>" . $record['FightNo']. "</div>";  
+										echo "</div>";
+										echo "<div class='col-xs-2 col-md-2 date'>";
+										echo "<div class='text-muted'>" . "Claimed" . "</div>";
+										echo "<div class='large' id ='win'>" . $record['FightNo']. "</div>";  
+										echo "</div>";
+										echo "<div class='col-xs-2 col-md-2 date'>";
+										echo "<div class='text-muted'>" . "Unclaimed" . "</div>";
+										echo "<div class='large' id ='win'>" . $record['FightNo']. "</div>";  
+										echo "</div>";
 										echo "</div>";
 										echo "</div>";
 										// echo "</div>";
@@ -411,40 +400,7 @@
 									  }
 									 
 									
-										// echo "</div>";
 									?>				
-
-
-									<!-- <div class="col-xs-10">
-										<div class ="col-md-6">
-										<h4><a href="#">Fight Details</a></h4>
-									    <p>Total Count:</p>
-										<p>Total Amount:</p>
-										<p>Revenue:</p>
-										<p>TotaI Winners</p>
-										<p>Total Claimed:</p>
-										<p>Total Unclaimed:</p>
-										</div>
-										<div class ="col-md-6">
-										<h4><a href="#">----</a></h4>
-									    <p>Total Count:</p>
-										<p>Total Amount:</p>
-										<p>Revenue:</p>
-										<p>TotaI Winners</p>
-										<p>Total Claimed:</p>
-										<p>Total Unclaimed:</p>
-										</div>
-
-
-									</div> -->
-									
-
-							
-						
-
-
-
-						
 			
 			</div><!--/.col-->
 			

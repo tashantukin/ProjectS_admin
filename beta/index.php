@@ -254,7 +254,18 @@
 								</h1>
 								<hr>
 								<h5 class="font-weight-bold">Total Amount</h5>	
-								<h1 class="font-weight-bolder" style="font-size:70px">1268</h1>
+								<h1 class="font-weight-bolder" id ="totalmeron" style="font-size:70px">
+								<script type ="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+												</script>
+												<script type ="text/javascript">
+													$(document).ready(function() {
+														setInterval(function() {        
+															$('#totalmeron').load('betTotalMeron.php')
+														},3000);
+													});
+												</script>					
+							
+							</h1>
 							</div>
 						<!-- </div> -->
 					</div>
@@ -279,8 +290,16 @@
 								</h1>
 								<hr>
 								<h5 class="font-weight-bold">Total Amount</h5>	
-								<h1 class="font-weight-bolder" style="font-size:70px">
-											423342
+								<h1 class="font-weight-bolder" id ="totalwala"style="font-size:70px">
+								<script type ="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+												</script>
+												<script type ="text/javascript">
+													$(document).ready(function() {
+														setInterval(function() {                           
+															$('#totalwala').load('betTotalWala.php')
+														},3000);
+													});
+												</script>
 								</h1>
 							</div>
 						</div>

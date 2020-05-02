@@ -279,7 +279,7 @@
 												<script type ="text/javascript">
 													$(document).ready(function() {
 														setInterval(function() {                           
-															$('#walacount').load('betCount.php')
+															$('#walacount').load('betCountWala.php')
 														},3000);
 													});
 												</script>

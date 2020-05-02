@@ -18,7 +18,7 @@
        $f =  $fightno['FightNo'] + 1;
     }
      
-    $query = "INSERT INTO tblfight(ArenaID,SultadaID,FightNo) values('1', $s, $f)";
+    $query = "INSERT INTO tblfight(ArenaID,SultadaID,FightNo,Status) values('1', $s, $f,'1')";
     if (!$result = mysqli_query($conn, $query)) {
         exit(mysqli_error($conn));
     }

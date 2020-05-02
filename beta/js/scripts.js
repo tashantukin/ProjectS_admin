@@ -14,6 +14,12 @@ $(document).ready(function() {
   $('#winner').hide();
 });
 
+$('#winner').on('load', function(){
+if ($(this).text() == 'WALA') {
+  $(this).css('color','blue');
+
+}
+})
 
 $('#win').on('load', function(){
   if($(this).text() == 'MERON') {

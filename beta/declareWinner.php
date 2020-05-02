@@ -15,6 +15,7 @@ if ($side != 'DRAW') {
     $query = "UPDATE tblFight SET TotalBetCount = (select count(ID) from tblbet where FightID = (select max(FightID) from tblFight)),
                 TotalBetAmount = (select sum(BetAmount) from tblbet where FightID = (select max(FightID) from tblFight)),
                 TotalWinningAmount = (select sum(TotalWinAmount) from tblbet where FightID = (select max(FightID) from tblFight)),
+                FightWinner = '" . $side . "' ,TotalWinner = (select count(ID) from tblbet where FightID = (select max(FightID) from tblFight)),
                 FightWinner = '" . $side . "'
     order by FightID desc limit 1";
     if (!$result = mysqli_query($conn, $query)) {
@@ -22,7 +23,5 @@ if ($side != 'DRAW') {
     }
 
        mysqli_close($conn);
-
-
 ?>
 

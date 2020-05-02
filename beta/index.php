@@ -361,7 +361,7 @@
 					<div class="panel-body articles-container">
 			
 									<?php
-									  $sql = "SELECT FightNo, FightWinner FROM tblFight order by FightID desc limit 3";
+									  $sql = "SELECT FightNo, FightWinner,TotalBetCount,TotalBetAmount, TotalWinner, TotalWinningAmount, TotalClaimed, TotalUnclaimed FROM tblFight order by FightID desc limit 3";
 									  $resultset = mysqli_query($conn, $sql);// or die("database error:". mysqli_error($conn));  
 									  while( $record = mysqli_fetch_assoc($resultset)) {
 										 echo "<div class='article border-top'>";
@@ -375,23 +375,23 @@
 										echo "</div>";
 										echo "<div class='col-xs-2 col-md-2 date'>";
 										echo "<div class='text-muted'>" . "Total Count" . "</div>";
-										echo "<div class='large' id ='win'>" . $record['FightNo']. "</div>";  
+										echo "<div class='large' id ='win'>" . $record['TotalBetCount']. "</div>";  
 										echo "</div>";
 										echo "<div class='col-xs-2 col-md-2 date'>";
 										echo "<div class='text-muted'>" . "Total Amount" . "</div>";
-										echo "<div class='large' id ='win'>" . $record['FightNo']. "</div>";  
+										echo "<div class='large' id ='win'>" . number_format(floatval($record['TotalBetAmount']),2). "</div>";  
 										echo "</div>";
 										echo "<div class='col-xs-2 col-md-2 date'>";
 										echo "<div class='text-muted'>" . "Revenue" . "</div>";
-										echo "<div class='large' id ='win'>" . $record['FightNo']. "</div>";  
+										echo "<div class='large' id ='win'>" . number_format(floatval($record['TotalWinningAmount']),2). "</div>";  
 										echo "</div>";
 										echo "<div class='col-xs-2 col-md-2 date'>";
 										echo "<div class='text-muted'>" . "Claimed" . "</div>";
-										echo "<div class='large' id ='win'>" . $record['FightNo']. "</div>";  
+										echo "<div class='large' id ='win'>" . $record['TotalClaimed']. "</div>";  
 										echo "</div>";
 										echo "<div class='col-xs-2 col-md-2 date'>";
 										echo "<div class='text-muted'>" . "Unclaimed" . "</div>";
-										echo "<div class='large' id ='win'>" . $record['FightNo']. "</div>";  
+										echo "<div class='large' id ='win'>" . $record['TotalUnclaimed']. "</div>";  
 										echo "</div>";
 										echo "</div>";
 										echo "</div>";

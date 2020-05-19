@@ -10,7 +10,6 @@
        $s =  $sultadano['sultadano'];
     }
     
-
     //get the last fight No.
     $sql = "SELECT FightNo from tblfight where FightID = (select max(FightID) from tblfight)";
     $resultset = mysqli_query($conn, $sql) or die("database error:". mysqli_error($conn)); 

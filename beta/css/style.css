@@ -1,0 +1,343 @@
+html {
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+  font-size: 100%;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+  margin:0;
+  padding:0;
+}
+.mid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top:1em;
+}
+
+
+/* Switch starts here */
+.rocker {
+  display: inline-block;
+  position: relative;
+  /*
+  SIZE OF SWITCH
+  ==============
+  All sizes are in em - therefore
+  changing the font-size here
+  will change the size of the switch.
+  See .rocker-small below as example.
+  */
+  font-size: 2em;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  color: #888;
+  width: 7em;
+  height: 4em;
+  overflow: hidden;
+  border-bottom: 0.5em solid #eee;
+}
+
+.rocker-small {
+  font-size: 0.75em; /* Sizes the switch */
+  margin: 1em;
+}
+
+.rocker::before {
+  content: "";
+  position: absolute;
+  top: 0.5em;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #999;
+  border: 0.5em solid #eee;
+  border-bottom: 0;
+}
+
+.rocker input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.switch-left,
+.switch-right {
+  cursor: pointer;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.5em;
+  width: 3em;
+  transition: 0.2s;
+}
+
+.switch-left {
+  height: 2.4em;
+  width: 2.75em;
+  left: 0.85em;
+  bottom: 0.4em;
+  background-color: #ddd;
+  transform: rotate(15deg) skewX(15deg);
+}
+
+.switch-right {
+  right: 0.5em;
+  bottom: 0;
+  background-color: #bd5757;
+  color: #fff;
+}
+
+.switch-left::before,
+.switch-right::before {
+  content: "";
+  position: absolute;
+  width: 0.4em;
+  height: 2.45em;
+  bottom: -0.45em;
+  background-color: #ccc;
+  transform: skewY(-65deg);
+}
+
+.switch-left::before {
+  left: -0.4em;
+}
+
+.switch-right::before {
+  right: -0.375em;
+  background-color: transparent;
+  transform: skewY(65deg);
+}
+
+input:checked + .switch-left {
+  background-color: #0084d0;
+  color: #fff;
+  bottom: 0px;
+  left: 0.5em;
+  height: 2.5em;
+  width: 3em;
+  transform: rotate(0deg) skewX(0deg);
+}
+
+input:checked + .switch-left::before {
+  background-color: transparent;
+  width: 3.0833em;
+}
+
+input:checked + .switch-left + .switch-right {
+  background-color: #ddd;
+  color: #888;
+  bottom: 0.4em;
+  right: 0.8em;
+  height: 2.4em;
+  width: 2.75em;
+  transform: rotate(-15deg) skewX(-15deg);
+}
+
+input:checked + .switch-left + .switch-right::before {
+  background-color: #ccc;
+}
+
+/* Keyboard Users */
+input:focus + .switch-left {
+  color: #333;
+}
+
+input:checked:focus + .switch-left {
+  color: #fff;
+}
+
+input:focus + .switch-left + .switch-right {
+  color: #fff;
+}
+
+input:checked:focus + .switch-left + .switch-right {
+  color: #333;
+}
+
+
+/* .btn-lock { 
+  position: absolute !important;
+  top: calc(50% - 32px);
+  left: calc(50% - 32px);
+  display: inline-block;
+  background: #ff5b5b;
+  width: 64px;
+  height: 64px;
+  box-sizing: border-box;
+  padding: 12px 0 0 18px;
+  border-radius: 50%;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.btn-lock svg {
+  fill: none !important;
+  transform: translate3d(0, 0, 0) !important;
+}
+.btn-lock svg .bling {
+  stroke: #fff !important;
+  stroke-width: 2.5 !important;
+  stroke-linecap: round;
+  stroke-dasharray: 3;
+  stroke-dashoffset: 15;
+  transition: all 0.3s ease;
+}
+.btn-lock svg .lock {
+  stroke: #fff;
+  stroke-width: 4;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  stroke-dasharray: 36;
+  transition: all 0.4s ease;
+}
+.btn-lock svg .lockb {
+  fill: #fff !important;
+  fill-rule: evenodd;
+  clip-rule: evenodd;
+  transform: rotate(8deg);
+  transform-origin: 14px 20px;
+  transition: all 0.2s ease;
+}
+#inpLock {
+  display: none !important;
+}
+#inpLock:checked + label {
+  background: #20cca5 !important;
+}
+#inpLock:checked + label svg {
+  opacity: 1;
+}
+#inpLock:checked + label svg .bling {
+  animation: bling 0.3s linear forwards;
+  animation-delay: 0.2s;
+}
+#inpLock:checked + label svg .lock {
+  stroke-dasharray: 48;
+  animation: locked 0.3s linear forwards;
+}
+#inpLock:checked + label svg .lockb {
+  transform: rotate(0);
+  transform-origin: 14px 22px;
+}
+@-moz-keyframes bling {
+  50% {
+    stroke-dasharray: 3;
+    stroke-dashoffset: 12;
+  }
+  100% {
+    stroke-dasharray: 3;
+    stroke-dashoffset: 9;
+  }
+}
+@-webkit-keyframes bling {
+  50% {
+    stroke-dasharray: 3;
+    stroke-dashoffset: 12;
+  }
+  100% {
+    stroke-dasharray: 3;
+    stroke-dashoffset: 9;
+  }
+}
+@-o-keyframes bling {
+  50% {
+    stroke-dasharray: 3;
+    stroke-dashoffset: 12;
+  }
+  100% {
+    stroke-dasharray: 3;
+    stroke-dashoffset: 9;
+  }
+}
+@keyframes bling {
+  50% {
+    stroke-dasharray: 3;
+    stroke-dashoffset: 12;
+  }
+  100% {
+    stroke-dasharray: 3;
+    stroke-dashoffset: 9;
+  }
+}
+@-moz-keyframes locked {
+  50% {
+    transform: translateY(1px);
+  }
+}
+@-webkit-keyframes locked {
+  50% {
+    transform: translateY(1px);
+  }
+}
+@-o-keyframes locked {
+  50% {
+    transform: translateY(1px);
+  }
+}
+@keyframes locked {
+  50% {
+    transform: translateY(1px);
+  }
+}
+ */
+
+/* 
+ body, html {
+  background: #efefef;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100%;
+  z-index: -1;
+} */
+/* .btn {
+  border: 3px solid #1a1a1a;
+  display: inline-block;
+  padding: 10px;
+  position: relative;
+  text-align: center;
+  transition: background 600ms ease, color 600ms ease;
+}
+input[type="radio"].toggle {
+  display: none;
+}
+input[type="radio"].toggle + label {
+  cursor: pointer;
+  min-width: 60px;
+}
+input[type="radio"].toggle + label:hover {
+  background: none;
+  color: #1a1a1a;
+}
+input[type="radio"].toggle + label:after {
+  background: #1a1a1a;
+  content: "";
+  height: 100%;
+  position: absolute;
+  top: 0;
+  transition: left 200ms cubic-bezier(0.77, 0, 0.175, 1);
+  width: 100%;
+  z-index: -1;
+}
+input[type="radio"].toggle.toggle-left + label {
+  border-right: 0;
+}
+input[type="radio"].toggle.toggle-left + label:after {
+  left: 100%;
+}
+input[type="radio"].toggle.toggle-right + label {
+  margin-left: -5px;
+}
+input[type="radio"].toggle.toggle-right + label:after {
+  left: -100%;
+}
+input[type="radio"].toggle:checked + label {
+  cursor: default;
+  color: #fff;
+  transition: color 200ms;
+}
+input[type="radio"].toggle:checked + label:after {
+  left: 0;
+} */

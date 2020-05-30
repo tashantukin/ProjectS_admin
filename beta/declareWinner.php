@@ -6,9 +6,12 @@ $content = json_decode($contentBodyJson,true);
 $side = $content['side'];
 
 //GET MAX FIGHT ID
-    $sql = "SELECT max(FightID) from tblFight";
+    $sql = "SELECT max(FightID) as maxID from tblFight";
     $resultset = mysqli_query($conn, $sql) or die("database error:". mysqli_error($conn)); 
-    $maxId= mysqli_fetch_assoc($resultset);
+    while($record = mysqli_fetch_assoc($resultset)) {
+        $maxId = $record['maxID'];
+    }
+    // $maxId= mysqli_fetch_assoc($resultset);
   
 if ($side != 'DRAW') {
 

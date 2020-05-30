@@ -11,13 +11,17 @@
     }
     
     //get the last fight No.
-    $sql = "SELECT FightNo from tblfight where FightID = (select max(FightID) from tblfight)";
+    $sql = "SELECT FightNo,SultadaID from tblfight where FightID = (select max(FightID) from tblfight)";
     $resultset = mysqli_query($conn, $sql) or die("database error:". mysqli_error($conn)); 
    // $fightno = mysqli_fetch_assoc($resultset['FightNo']);
     while ($fightno = mysqli_fetch_assoc($resultset)) {
-       $f =  $fightno['FightNo'] + 1;
+       $f =  $fightno['FightNo'];
+       $sID =  $fightno['SultadaID'];
     }
-     
+    
+    //if new sultada, restart the fight number to 1
+    $s == $sID ? $f + 1 : $f  = 1;
+
     $query = "INSERT INTO tblfight(ArenaID,SultadaID,FightNo,Status) values('1', $s, $f,'1')";
     if (!$result = mysqli_query($conn, $query)) {
         exit(mysqli_error($conn));

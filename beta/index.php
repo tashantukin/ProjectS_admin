@@ -134,14 +134,23 @@
 
 							  <!-- <hr> -->
 							  <div class ="col-md-6">
-								<label for="betamounts">Maximum Bet Limit</label>
-								<input type="text" id="maxbet" placeholder="5000" class="form-control" />
+								<!-- <label for="betamounts">Maximum Bet Limit</label>
+								<input type="text" id="maxbet" placeholder="5000" class="form-control" /> -->
+
+								<?php
+									include("./db.php");
+								$sql = "SELECT value  from settings where id = 1";
+								$resultset = mysqli_query($conn, $sql) or die("database error:". mysqli_error($conn)); 
+								$betlimitrecord = mysqli_fetch_assoc($resultset);
+								?>
+								<label for="betamounts">Maximum Bet</label>
+								<input type="text" id="maxbet1" placeholder="Max Bet" class="form-control" value = "<?php echo $betlimitrecord['value'] ?>" />
 							  </div>
 							  <hr>
 							  <div class ="col-md-12">
 								<hr>
 							  <button type="button" class="btn btn-default">Cancel</button>
-							  <button type="button" class="btn btn-primary swalDefaultSuccess" onclick="SaveSultadaDetails()">Save Changes</button>
+							  <button type="button" class="btn btn-primary swalDefaultSuccess" onclick="SaveSultadaDetails();SaveMaxBet();">Save Changes</button>
 							  </div>
 							</div>
 						</div>
@@ -352,7 +361,7 @@
 		</div><!--/.row-->
 		
 		<div class="row">
-			<div class="col-md-6">
+			<div class="col-md-9">
 
 			<div class="panel panel-default articles">
 					<div class="panel-heading">
@@ -374,8 +383,8 @@
 										echo "<p id ='winner'>"  . $record['FightWinner'] ."</p>";
 										echo "</div>";
 										echo "<div class='col-xs-2 col-md-2 date'>";
-										echo "<div class='' style='color:red'>" . "Total Count" . "</div>";
-										echo "<div class='large' id ='win'>" . $record['TotalBetCount']. "</div>";  
+										echo "<div class='' style='color:red'>" . "Total Winner" . "</div>";
+										echo "<div class='large' id ='win'>" . $record['TotalWinner']. "</div>";  
 										echo "</div>";
 										echo "<div class='col-xs-2 col-md-2 date'>";
 										echo "<div class='' style='color:green'>" . "Total Amount" . "</div>";
@@ -393,6 +402,10 @@
 										echo "<div class='' style='color:indigo'>" . "Unclaimed" . "</div>";
 										echo "<div class='large' id ='win'>" . $record['TotalUnclaimed']. "</div>";  
 										echo "</div>";
+										// echo "<div class='col-xs-2 col-md-2 date'>";
+										// echo "<div class='' style='color:indigo'>" . "Unclaimed" . "</div>";
+										// echo "<div class='large' id ='win'>" . $record['TotalUnclaimed']. "</div>";  
+										// echo "</div>";
 										echo "</div>";
 										echo "</div>";
 										// echo "</div>";

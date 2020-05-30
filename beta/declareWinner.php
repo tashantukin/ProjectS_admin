@@ -24,7 +24,7 @@ if ($side != 'DRAW') {
     $query = "UPDATE tblFight SET TotalBetCount = (select count(ID) from tblbet where FightID = $maxId),
                 TotalBetAmount = (select sum(BetAmount) from tblbet where FightID = $maxId),
                 TotalWinningAmount = (select sum(TotalWinAmount) from tblbet where FightID = $maxId),
-                FightWinner = '" . $side . "' ,TotalWinner = (select count(ID) from tblbet where FightID = $maxId),
+                FightWinner = '" . $side . "' ,TotalWinner = (select count(ID) from tblbet where FightID = $maxId and Side = $side),
                 FightWinner = '" . $side . "' , Status = '0'
     order by FightID desc limit 1";
 

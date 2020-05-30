@@ -5,23 +5,32 @@ $contentBodyJson = file_get_contents('php://input');
 $content = json_decode($contentBodyJson,true);
 $side = $content['side'];
 
+//GET MAX FIGHT ID
+    $sql = "SELECT max(FightID) from tblFight";
+    $resultset = mysqli_query($conn, $sql) or die("database error:". mysqli_error($conn)); 
+    $maxId= mysqli_fetch_assoc($resultset);
+  
 if ($side != 'DRAW') {
 
-    $query = "UPDATE tblbet SET winStatus = '1' where Side =  '" . $side  . "' and FightID = (select max(FightID) from tblfight)";
+    $query = "UPDATE tblbet SET winStatus = '1' where Side =  '" . $side  . "' and FightID = $maxId";
     if (!$result = mysqli_query($conn, $query)) {
         exit(mysqli_error($conn));
-    }
-}
-    $query = "UPDATE tblFight SET TotalBetCount = (select count(ID) from tblbet where FightID = (select max(FightID) from tblFight)),
-                TotalBetAmount = (select sum(BetAmount) from tblbet where FightID = (select max(FightID) from tblFight)),
-                TotalWinningAmount = (select sum(TotalWinAmount) from tblbet where FightID = (select max(FightID) from tblFight)),
-                FightWinner = '" . $side . "' ,TotalWinner = (select count(ID) from tblbet where FightID = (select max(FightID) from tblFight)),
-                FightWinner = '" . $side . "' , Status = '0'
-    order by FightID desc limit 1";
-    if (!$result = mysqli_query($conn, $query)) {
-        exit(mysqli_error($conn));
+        // mysqli_close($conn);
     }
 
+    $query = "UPDATE tblFight SET TotalBetCount = (select count(ID) from tblbet where FightID = $maxId),
+                TotalBetAmount = (select sum(BetAmount) from tblbet where FightID = $maxId),
+                TotalWinningAmount = (select sum(TotalWinAmount) from tblbet where FightID = $maxId),
+                FightWinner = '" . $side . "' ,TotalWinner = (select count(ID) from tblbet where FightID = $maxId),
+                FightWinner = '" . $side . "' , Status = '0'
+    order by FightID desc limit 1";
+
+    if (!$result = mysqli_query($conn, $query)) {
+        exit(mysqli_error($conn));
+    }
+   
        mysqli_close($conn);
+}
+       
 ?>
 

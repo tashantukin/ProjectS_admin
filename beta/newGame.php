@@ -20,9 +20,9 @@
     }
     
     //if new sultada, restart the fight number to 1
-    $s == $sID ? $f + 1 : $f  = 1;
+     $fcount =  $s == $sID ? $f + 1 : 1;
 
-    $query = "INSERT INTO tblfight(ArenaID,SultadaID,FightNo,Status) values('1', $s, $f,'1')";
+    $query = "INSERT INTO tblfight(ArenaID,SultadaID,FightNo,Status) values('1', $s, $fcount,'1')";
     if (!$result = mysqli_query($conn, $query)) {
         exit(mysqli_error($conn));
     }

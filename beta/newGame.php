@@ -27,7 +27,7 @@
         exit(mysqli_error($conn));
     }
 
-    $query = "UPDATE tblbet SET status = '0' where status = '1'";
+    $query = "UPDATE tblbet SET Status = '0' where Status = '1'";
     if (!$result = mysqli_query($conn, $query)) {
         exit(mysqli_error($conn));
     }

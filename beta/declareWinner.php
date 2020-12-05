@@ -6,7 +6,7 @@ $content = json_decode($contentBodyJson,true);
 $side = $content['side'];
 
 //GET MAX FIGHT ID
-    $sql = "SELECT max(FightID) as maxID from tblFight";
+    $sql = "SELECT max(FightID) as maxID from tblfight";
     $resultset = mysqli_query($conn, $sql) or die("database error:". mysqli_error($conn)); 
     while($record = mysqli_fetch_assoc($resultset)) {
         $maxId = $record['maxID'];
@@ -21,11 +21,11 @@ if ($side != 'DRAW') {
         // mysqli_close($conn);
     }
 
-    $query = "UPDATE tblFight SET TotalBetCount = (select count(ID) from tblbet where FightID = $maxId),
+    $query = "UPDATE tblfight SET TotalBetCount = (select count(ID) from tblbet where FightID = $maxId),
                 TotalBetAmount = (select sum(BetAmount) from tblbet where FightID = $maxId),
                 TotalWinningAmount = (select sum(TotalWinAmount) from tblbet where FightID = $maxId),
-                FightWinner = '" . $side . "' ,TotalWinner = (select count(ID) from tblbet where FightID = $maxId and Side = $side),
-                FightWinner = '" . $side . "' , Status = '0'
+                FightWinner = '" . $side . "' ,TotalWinner = (select count(ID) from tblbet where FightID = $maxId and Side = '" . $side . "'),
+                FightWinner = '" . $side . "' , Status = '0', TotalUnclaimed = (select count(ID) from tblbet where FightID = $maxId and Side = '" . $side . "')
     order by FightID desc limit 1";
 
     if (!$result = mysqli_query($conn, $query)) {

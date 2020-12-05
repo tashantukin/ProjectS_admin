@@ -370,12 +370,12 @@
 					<div class="panel-body articles-container">
 			
 									<?php
-									  $sql = "SELECT FightNo, FightWinner,TotalBetCount,TotalBetAmount, TotalWinner, TotalWinningAmount, TotalClaimed, TotalUnclaimed FROM tblFight where Status != 1 order by FightID desc limit 3";
+									  $sql = "SELECT FightNo, FightWinner,TotalBetCount,TotalBetAmount, TotalWinner, TotalWinningAmount, TotalClaimed, TotalUnclaimed FROM tblfight where Status != 1 order by FightID desc limit 3";
 									  $resultset = mysqli_query($conn, $sql);// or die("database error:". mysqli_error($conn));  
 									  while( $record = mysqli_fetch_assoc($resultset)) {
 										 echo "<div class='article border-top'>";
 										// echo "<hr>";
-										echo "<div class='col-xs-12'>";
+										echo "<div class='col-xs-4'>";
 										echo "<div class='row'>";
 										echo "<div class='col-xs-2 col-md-2 date'>";
 										echo "<div class='' style='color:darkred'>" . "Fight No:" . "</div>";
